@@ -1,0 +1,4 @@
+[package]
+name = "mahjong_ai"
+version = "0.1.0"
+authors = ["yilin <wormful@gmail.com>"]

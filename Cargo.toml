@@ -2,3 +2,6 @@
 name = "mahjong_ai"
 version = "0.1.0"
 authors = ["yilin <wormful@gmail.com>"]
+
+[dependencies]
+scan_fmt = "0.1.0"

@@ -18,7 +18,7 @@ void init()
         string tile;
         cin >> tile;
         int tile_id = tile_to_id(tile);
-        hand[tile_id] += 1;
+        hand.insert(tile_id);
         remain[tile_id] -= 1;
     }
 }

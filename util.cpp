@@ -23,3 +23,33 @@ string id_to_tile(int id)
 {
     return all_tiles[id];
 }
+
+bool is_word(int id)
+{
+    return id >= 27;
+}
+
+bool is_orphans(int tile_id)
+{
+    if (tile_id >= 26) {
+        return true;
+    }
+    int num = tile_id % 9;
+    if (num == 0 || num == 8) {
+        return true;
+    }
+    return false;
+}
+
+void modify_map(map<int, int>& m, int tile_id, int delta)
+{
+    int val = (m[tile_id] += delta);
+    if (val == 0) {
+        m.erase(m.find(tile_id));
+    }
+}
+
+void modify_hand(int tile_id, int delta)
+{
+    modify_map(hand, tile_id, delta);
+}

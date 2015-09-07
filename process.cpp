@@ -4,7 +4,7 @@ void pick()
     cin >> tile;
     int tile_id = tile_to_id(tile);
     remain[tile_id] -= 1;
-    hand.insert(tile_id);
+    modify_hand(tile_id, 1);
     out();
 }
 
@@ -33,8 +33,7 @@ void mpeng()
     int tile_id = tile_to_id(tile);
     remain[tile_id] -= 3;
     if (id == self) {
-        hand.erase(hand.find(tile_id));
-        hand.erase(hand.find(tile_id));
+        modify_hand(tile_id, -2);
     }
 }
 
@@ -52,10 +51,10 @@ void mchi()
     remain[tile_id + 1] -= 1;
     remain[tile_id + 2] -= 1;
     if (id == self) {
-        hand.insert(last_tile);
-        hand.erase(hand.find(tile_id));
-        hand.erase(hand.find(tile_id + 1));
-        hand.erase(hand.find(tile_id + 2));
+        modify_hand(last_tile, 1);
+        modify_hand(tile_id, -1);
+        modify_hand(tile_id + 1, -1);
+        modify_hand(tile_id + 2, -1);
     }
 }
 
@@ -67,9 +66,7 @@ void mgang()
     int tile_id = tile_to_id(tile);
     remain[tile_id] -= 4;
     if (id == self) {
-        hand.erase(hand.find(tile_id));
-        hand.erase(hand.find(tile_id));
-        hand.erase(hand.find(tile_id));
+        modify_hand(tile_id, -3);
     }
 }
 
@@ -78,10 +75,7 @@ void magang()
     int id;
     cin >> id;
     if (id == self) {
-        hand.erase(hand.find(last_tile));
-        hand.erase(hand.find(last_tile));
-        hand.erase(hand.find(last_tile));
-        hand.erase(hand.find(last_tile));
+        modify_hand(last_tile, -4);
     }
 }
 
